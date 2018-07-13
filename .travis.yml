@@ -5,4 +5,4 @@ node_js:
 services:
   - docker
 script:
-  - npm test && npm run build && && docker build -t iluvzhouying/shift-scheduler-app . && echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin && docker push iluvzhouying/shift-scheduler-app:$(git log -1 --pretty=%h)
+  - npm test && npm run build && docker build -t iluvzhouying/shift-scheduler-app . && echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin && docker push iluvzhouying/shift-scheduler-app:$(git log -1 --pretty=%h)
