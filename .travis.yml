@@ -1,7 +1,10 @@
 sudo: required
 language: node_js
 node_js:
-  - "node"
+- node
 services:
-  - docker
-script: ./push_image
+- docker
+script: docker-image-build/pipeline
+notifications:
+  slack:
+    secure: f2M3HuBXZ4AJF3nkjUa+fpMeZ7tk6O7QVNgu8ynXIWrts5oe/kI7TEdNTrG2sO7Zqy3x7McrklAdf7YLByyG23rJQ3rzPD/EhGgmHEktWzQMND8rJm7RjnmZJOhEbbB2I+qnEB1GazTErTvBfkK66rM76FRkkp7RIwA7UU8YhscFE52n+d0pxWlTVte3DHj+wBLb1oZBx4zwCwpFeoGZc672O4TSnDiKZY8hK8OLCuD6lkGgW50PqIZLa1I0uAmGFdcrpQ/TMewFfRBQ9LONt4Xf6IWxqZOEQjRTD1hWcAB7toaCXmujcD4RvvEJI5I0/qpA0DuNgybmAopSmnIZQX8V0ZTyAIqdgxtxm4Kc4v9eklelNPgS5W/Iwy33Mjb5vy9BhGk+YHUqgYgip601eCI6iIVpwmPtNhRSNQYisrlnkxWMSflruvnmL3GRjDDLlUFWgivz1YvQpuLCOttiqucEiWQMLz8O7iR/1DhdyaSmoDz+K8b9gDI4WYbzue1puKw0wwYAd1xPuLl3LMKbksNb0temd/JZFJytFqyLHfLXnQKzc53SqH/ht+SteWoUDfwnAa9F7ucNx+BSVb6e5Zs2Z96hNDQK+vLyQPOPA3s5ZqBSnjTfqn3F16wE/mVoezBKF8xdEskiMHl9Y4MGn9B8E9dkr+57GOVAFV755YY=#app-build
