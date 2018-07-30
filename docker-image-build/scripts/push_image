@@ -2,11 +2,11 @@
 
 set -euxo pipefail
 
+npm run build
+
 readonly IMAGE_NAMESPACE='iluvzhouying'
 readonly IMAGE_NAME='shift-scheduler-app' 
 readonly IMAGE="${IMAGE_NAMESPACE}/${IMAGE_NAME}:$(git log -1 --pretty=%h)"
-
-npm run build
 
 docker build -t ${IMAGE} . 
 
