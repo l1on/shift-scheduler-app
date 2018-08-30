@@ -12,27 +12,29 @@ export default class Schedule extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            shifts: []
+            shifts: [],
+            employeeName: ""
         };
     }
 
     fetchShifts(employeeId) {
-        fetch(`/api/shifts?employeeId=${employeeId}`)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        shifts: result
-                });
-                },
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                });
-            }
-        )
+        Promise.all([
+            fetch(`/api/shifts?employeeId=${employeeId}`),
+            fetch(`http://interviewtest.replicon.com/employees/${employeeId}`),
+        ])
+        .then(responses => Promise.all(responses.map(response => response.json())))
+        .then(([shifts, employee]) => {
+            this.setState({
+                isLoaded: true,
+                shifts: shifts,
+                employeeName: employee.name
+            });
+        }).catch(error => {
+            this.setState({
+                isLoaded: true,
+                error
+            })
+        });
     }
 
     componentWillReceiveProps(nextProps) {
@@ -55,7 +57,7 @@ export default class Schedule extends Component {
     }
 
     render() {
-        const { error, isLoaded, shifts } = this.state;
+        const { error, isLoaded, shifts, employeeName } = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
@@ -63,7 +65,7 @@ export default class Schedule extends Component {
         } else {
             return (
                 <div>
-                    <h2>{this.props.location.state.name}</h2>
+                    <h2>{employeeName}</h2>
                     <InfiniteCalendar
                         displayOptions={{showHeader: false,}}
                         min={new Date(2015, 5, 1)}
