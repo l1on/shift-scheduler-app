@@ -1,0 +1,6 @@
+[Settings]
+  ID = "455ec1e4-c7ec-4dac-96f6-781db5280617"
+
+[Build]
+  Publish = "build/"
+  Functions = ""

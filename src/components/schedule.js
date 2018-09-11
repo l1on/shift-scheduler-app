@@ -20,7 +20,7 @@ export default class Schedule extends Component {
     fetchShifts(employeeId) {
         Promise.all([
             fetch(`/api/shifts?employeeId=${employeeId}`),
-            fetch(`http://interviewtest.replicon.com/employees/${employeeId}`),
+            fetch(`/api/employees/${employeeId}`),
         ])
         .then(responses => Promise.all(responses.map(response => response.json())))
         .then(([shifts, employee]) => {

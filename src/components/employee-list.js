@@ -14,7 +14,7 @@ export default class EmployeeList extends Component {
     }
 
     componentDidMount() {
-        fetch("http://interviewtest.replicon.com/employees")
+        fetch("/api/employees")
             .then(res => res.json())
             .then(
                 (result) => {
