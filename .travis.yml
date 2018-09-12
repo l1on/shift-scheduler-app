@@ -1,9 +1,16 @@
 language: node_js
 node_js:
 - node
-script: deployment/pipeline
 notifications:
   slack:
     secure: msjs61mWAKSiwTKvJGYdezQUzJsMMhP15UJW/EH1lxCLJSFBQttdxdg5wUehtEPqKGvcxIOzhAVc67JijbhSAgUBuJxRCSDRN80VCF7vpj1B3mRkqmvpKm8MgwAENF4kFlCIhQsqDCUxk8IDylO3y0HXuv6AxSGL4XDYU7VrEnIgpgNotNPAWw+xGRP1G7fzpZiHMSS2QT9w9f6+OD4fDbshWMdOZhdjV4/6VtXqSxFI/nXo529m8lw4o/GQbrnsH+YIlCTXkWKc3IUXY4galJUfevBhMa/cYEy5P55mnVevMQPQ4nezzIRSqfdRjL2yOSCYm4rEzUw1Sg9RXDK6Nn6Dy5R1ocWUJ3M2rZcpFsIwdwKrYXJHbsV0sGm5X3v9Le9/pbQo4iiSOULQtPXRKjzXl2uLFm54N/9HLwucTGkt6wiO9dQszo1KPjl6rv4Y/KypogS31muwkarzX4SoiPP4zvdD/tTCOzgWA2l6Oru7r6mIG0IbDpMQc28jfCWLfbXdnx/VcE+qVT1DVt7tbwNnyHPzKDv9NOJ+a2VqwUFKAm1mGWS9NEOIyDYIJvu/CV602hSYFtdXh0tmuuepbClIY/rB21FODz4v75UT9Hya2fWjot6h4X0Fhes+m00QlaoWLTeLbA+AKfV9MQP5rQyONn95O/CuaAkHFXew+38=
 before_install:
   - wget -qO- 'https://cli.netlify.com/download/latest/linux' | tar xz
+jobs:
+  include:
+  - stage: test
+    script: ci-scripts/test
+  - stage: build
+    script: ci-scripts/build
+  - stage: deployment
+    script: ci-scripts/deploy
