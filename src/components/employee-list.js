@@ -14,7 +14,7 @@ export default class EmployeeList extends Component {
     }
 
     componentDidMount() {
-        fetch("/api/employees")
+        fetch("/api/admin/employees")
             .then(res => res.json())
             .then(
                 (result) => {

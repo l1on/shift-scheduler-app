@@ -20,7 +20,7 @@
     "/api/shifts": {
       "target": "http://localhost:3001"
     },
-    "/api/employees": {
+    "/api/admin": {
       "target": "http://localhost:3002"
     }
   }
