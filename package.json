@@ -18,10 +18,16 @@
   },
   "proxy": {
     "/api/shifts": {
-      "target": "http://localhost:3001"
+      "target": "http://localhost:3001",
+      "pathRewrite": {
+        "^/api/shifts": "/shifts"
+      }
     },
     "/api/admin": {
-      "target": "http://localhost:3002"
+      "target": "http://localhost:3002",
+      "pathRewrite": {
+        "^/api/admin": "/admin"
+      }
     }
   }
 }
