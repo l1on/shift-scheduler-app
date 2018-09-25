@@ -27,7 +27,8 @@ export default class Schedule extends Component {
             this.setState({
                 isLoaded: true,
                 shifts: shifts,
-                employeeName: employee.name
+                employeeName: employee.name,
+                error: null
             });
         }).catch(error => {
             this.setState({
